@@ -58,7 +58,7 @@ if st.button("Predict"):
 
     # Prediction
     prediction = model.predict(input_data)[0]
-    probability = model.predict_proba(input_scaled)[0][1]
+    probability = model.predict_proba(input_data)[0][1]
 
     # Display result
     if prediction == 1:
