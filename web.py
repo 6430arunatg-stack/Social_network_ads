@@ -11,7 +11,7 @@ feature_columns = pickle.load(open('feature_columns.pkl', 'rb'))
 # Page configuration
 st.set_page_config(page_title="Purchase Prediction")
 
-st.title("🛒 Purchase Prediction")
+st.title("🛒 customer Purchase Prediction")
 st.write("Predict whether a user will purchase a product.")
 
 # User inputs
@@ -58,12 +58,14 @@ if st.button("Predict"):
 
     # Prediction
     prediction = model.predict(input_data)[0]
+    probability = model.predict_proba(input_scaled)[0][1]
 
     # Display result
     if prediction == 1:
         st.success("User is likely to purchase the product! 🎉")
     else:
         st.warning("User is unlikely to purchase the product.")
+    st.write("purchase probability :{:2f}%".format(probability * 100))
 
 
 
